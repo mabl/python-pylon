@@ -52,7 +52,7 @@ cdef class Logger(object):
              _logger_WARNING:'WARNING',
              _logger_INFO:   'INFO',
              _logger_DEBUG:  'DEBUG'}
-    cdef string _name
+    cdef str _name
     cdef bool _debugFlag#FIXME: should be an integer
 
     def __init__(self,debug=True):

@@ -69,13 +69,14 @@ cdef class __DeviceInformation(Logger):
         pass
 
     def __str__(self):
-        return "%s"%(<string>self._devInfo.GetSerialNumber())
+        return "%s" % (<string>self._devInfo.GetSerialNumber())
     def __repr__(self):
         return "%s (%s)"%(self.SerialNumber,self.ModelName)
 
     cdef SetCppDevInfo(self,CppDevInfo *devInfo):
         self._devInfo = devInfo
-        self._name = "DeviceInformation(%s)"%(self.SerialNumber)
+        print(self.SerialNumber, type(self.SerialNumber))
+        self._name = "DeviceInformation(%s)" % (self.SerialNumber)
     
     cdef CppDevInfo* GetCppDevInfo(self):
         return self._devInfo
@@ -86,35 +87,35 @@ cdef class __DeviceInformation(Logger):
     
     @property
     def ModelName(self):
-        return <string>self._devInfo.GetModelName()
+        return (<string>self._devInfo.GetModelName()).decode('ascii')
     
     @property
     def UserDefinedName(self):
-        return <string>self._devInfo.GetUserDefinedName()
+        return (<string>self._devInfo.GetUserDefinedName()).decode('ascii')
     
     @property
     def DeviceVersion(self):
-        return <string>self._devInfo.GetDeviceVersion()
+        return (<string>self._devInfo.GetDeviceVersion()).decode('ascii')
     
     @property
     def DeviceVersion(self):
-        return <string>self._devInfo.GetDeviceVersion()
+        return (<string>self._devInfo.GetDeviceVersion()).decode('ascii')
     
     @property
     def Address(self):
-        return <string>self._devInfo.GetAddress()
+        return (<string>self._devInfo.GetAddress()).decode('ascii')
     
     @property
     def IpAddress(self):
-        return <string>self._devInfo.GetIpAddress()
+        return (<string>self._devInfo.GetIpAddress()).decode('ascii')
     
     @property
     def DefaultGateway(self):
-        return <string>self._devInfo.GetDefaultGateway()
+        return (<string>self._devInfo.GetDefaultGateway()).decode('ascii')
     
     @property
     def SubnetMask(self):
-        return <string>self._devInfo.GetSubnetMask()
+        return (<string>self._devInfo.GetSubnetMask()).decode('ascii')
     
     @property
     def PortNr(self):
@@ -122,19 +123,19 @@ cdef class __DeviceInformation(Logger):
     
     @property
     def MacAddress(self):
-        return <string>self._devInfo.GetMacAddress()
+        return (<string>self._devInfo.GetMacAddress()).decode('ascii')
     
     @property
     def Interface(self):
-        return <string>self._devInfo.GetInterface()
+        return (<string>self._devInfo.GetInterface()).decode('ascii')
     
     @property
     def IpConfigOptions(self):
-        return <string>self._devInfo.GetIpConfigOptions()
+        return (<string>self._devInfo.GetIpConfigOptions()).decode('ascii')
     
     @property
     def IpConfigCurrent(self):
-        return <string>self._devInfo.GetIpConfigCurrent()
+        return (<string>self._devInfo.GetIpConfigCurrent()).decode('ascii')
     
     @property
     def IsPersistentIpActive(self):
