@@ -46,17 +46,17 @@
 class CppCamera : public Logger
 {
 public:
-  CppCamera( Pylon::CBaslerGigECamera::DeviceInfo_t,
-             Pylon::IPylonDevice*, Pylon::CBaslerGigECamera* );
+  CppCamera( Pylon::CInstantCamera::DeviceInfo_t,
+             Pylon::IPylonDevice*, Pylon::CInstantCamera* );
   //CppCamera( CppFactory*, CppDevInfo* );
   ~CppCamera();
   Pylon::String_t GetSerialNumber();
 
 private:
   //Pylon::CTlFactory *tlFactory;
-  Pylon::CBaslerGigECamera::DeviceInfo_t gigeDevInfo;
+  Pylon::CInstantCamera::DeviceInfo_t gigeDevInfo;
   Pylon::IPylonDevice *pDevice;
-  Pylon::CBaslerGigECamera *bCamera;
+  Pylon::CInstantCamera *bCamera;
 };
 
 #endif /* CAMERA_H */
