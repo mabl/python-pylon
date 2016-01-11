@@ -42,22 +42,18 @@ if [ "$1" == 'clean' ]; then
 	exit
 fi
 
-source env.sh
+#source env.sh
 
 echo $LD_LIBRARY_PATH
 
-export CFLAGS="-I$PYLON_ROOT/include "
-export CFLAGS+="-I$PYLON_ROOT/genicam/library/CPP/include "
-export CFLAGS+="-I./pylon "
-export CFLAGS+="-L$PYLONLIBDIR -L$GCLIBDIR -L$PYLONLIBDIR/pylon/tl/ "
-export CFLAGS+="-lpylonbase -lpylongigesupp -lpylonutility "
-#"-lpyloncamemu -lpylongige "
+# Build tools and flags
+#export LD=${CXX}
+#export CPPFLAGS="`${PYLON_ROOT}/bin/pylon-config --cflags` --static"
+#export CXXFLAGS= #e.g., CXXFLAGS=-g -O0 for debugging
+#export LDFLAGS=`${PYLON_ROOT}/bin/pylon-config --libs-rpath`
+#export LDLIBS=`${PYLON_ROOT}/bin/pylon-config --libs`
 
-export GCCVERSION=$(gcc --version | grep ^gcc | sed 's/^.* //g')
-export CFLAGS+="-I/usr/include/c++/$GCCVERSION "
-export CFLAGS+="-I/usr/include/x86_64-linux-gnu/c++/4.9 "
-#!!!!! hardcoded
+#export CC='g++'
 
-export CC='g++'
 
-python setup.py build
+python2 setup.py build

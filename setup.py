@@ -47,6 +47,9 @@ pylonExtension = Extension('pylon',['pylon/__init__.pyx',
                                     'pylon/DevInfo.cpp',
                                     'pylon/Camera.cpp'],
                            language="c++",
+                           include_dirs=["/opt/pylon5/include", ],
+                           library_dirs=["/opt/pylon5/lib64", ],
+                           libraries=["pylonbase", "pylonutility", "GenApi_gcc_v3_0_Basler_pylon_v5_0", "GCBase_gcc_v3_0_Basler_pylon_v5_0"],
                            #extra_compile_args=["-std=c++11"]
                            )
 
