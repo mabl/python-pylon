@@ -57,14 +57,16 @@ cdef extern from "DevInfo.h":
         bool IsAutoIpSupported() except+
 
 
-cdef class __DeviceInformation(Logger):
+import logging
+logger = logging.getLogger(__name__)
+
+cdef class __DeviceInformation(object):
     cdef:
         CppDevInfo *_devInfo
 
     def __init__(self,*args,**kwargs):
         super(__DeviceInformation,self).__init__(*args,**kwargs)
-        self._name = "DeviceInformation()"
-    
+
     def __del__(self):
         pass
 
@@ -75,9 +77,7 @@ cdef class __DeviceInformation(Logger):
 
     cdef SetCppDevInfo(self,CppDevInfo *devInfo):
         self._devInfo = devInfo
-        print(self.SerialNumber, type(self.SerialNumber))
-        self._name = "DeviceInformation(%s)" % (self.SerialNumber)
-    
+
     cdef CppDevInfo* GetCppDevInfo(self):
         return self._devInfo
     

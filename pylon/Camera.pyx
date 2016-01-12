@@ -33,22 +33,23 @@
 ##
 ###############################################################################
 
+import logging
+logger = logging.getLogger(__name__)
+
 cdef extern from "Camera.h":
     cdef cppclass CppCamera:
         CppCamera( CppFactory *factory, CppDevInfo *devInfo ) except+
         String_t GetSerialNumber() except+
 
 
-cdef class Camera(Logger):
+cdef class Camera(object):
     cdef:
         CppCamera *_camera
         int _serial
 
     def __init__(self,*args,**kwargs):
         super(Camera,self).__init__(*args,**kwargs)
-        self._name = "Camera()"
-        self._debug("Void Camera Object build, "\
-                    "but it doesn't link with an specific camera")
+        logger.debug("Void Camera Object build, but it doesn't link with an specific camera")
 
     def __del__(self):
         del self._camera
@@ -56,6 +57,3 @@ cdef class Camera(Logger):
     cdef SetCppCamera(self,CppCamera* cppCamera):
         self._camera = cppCamera
         self._serial = int(<string>self._camera.GetSerialNumber())
-        name = "Camera(%d)"%(self._serial)
-        self._debug("New name: %s"%name)
-        self._name = name

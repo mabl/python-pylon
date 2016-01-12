@@ -43,9 +43,6 @@ from libcpp.string cimport string
 #necessary includes from pylonAPI
 include "pylon/stdinclude.pyx"
 
-#highest level of python module includes
-include "Logger.pyx"
-
 #second level of python module includes
 include "DevInfo.pyx"
 
